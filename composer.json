@@ -1,0 +1,28 @@
+{
+    "name": "rockyakisoba/dom-parser-wrapper",
+    "description": "A wrapper of 'PHP Simple HTML DOM Parser'",
+    "type": "library",
+    "authors": [
+        {
+            "name": "rockyakisoba",
+            "email": "mmtrokuroku96@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/rocketsoba/curl-builder"
+        }
+    ],
+    "require": {
+	"sunra/php-simple-html-dom-parser": "1.5.2"
+    },
+    "require-dev": {
+        "rockyakisoba/curl-builder" : "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "DomParserWrapper\\" : "src"
+        }
+    }
+}
