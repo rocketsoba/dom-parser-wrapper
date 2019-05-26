@@ -125,6 +125,13 @@ class DomParserAdapter
         }
     }
 
+    public function getAllAttributes()
+    {
+        if (!is_null($this->dom->attr)) {
+            return $this->dom->attr;
+        }
+    }
+
     /* 未実装 */
     public function denyException()
     {
@@ -135,6 +142,10 @@ class DomParserAdapter
 
     public function __get($name)
     {
+        $all_attributes = $this->getAllAttributes();
+        if (isset($all_attributes[$name])) {
+            return $all_attributes[$name];
+        }
         switch ($name) {
             case 'outertext':
                 return $this->outertext();
