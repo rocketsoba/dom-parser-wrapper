@@ -53,7 +53,11 @@ class DomParserAdapter implements \IteratorAggregate
             }
         }
 
-        if (is_null($this->current_dom) && $this->allow_exception) {
+        if ((
+                 !is_object($this->current_dom)
+              || get_class($this->current_dom) !== "simplehtmldom_1_5\simple_html_dom_node"
+            )
+            && $this->allow_exception) {
             throw new DomNotFoundException();
         }
 
