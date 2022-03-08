@@ -2,7 +2,7 @@
 
 namespace DomParserWrapper;
 
-use \Sunra\PhpSimple\HtmlDomParser;
+use \KubAT\PhpSimple\HtmlDomParser;
 use \DomParserWrapper\Exception\DomNotFoundException;
 use \DomParserWrapper\Exception\DomUnreadableException;
 use \LogicException;
@@ -16,12 +16,12 @@ class DomParserAdapter implements \IteratorAggregate
 {
     /**
      * 現在のDOM(HtmlDomParser)オブジェクト
-     * @var \Sunra\PhpSimple\HtmlDomParser $current_dom
+     * @var \KubAT\PhpSimple\HtmlDomParser $current_dom
      */
     private $current_dom;
     /**
      * 要素が複数見つかり、DOM(HtmlDomParser)オブジェクトが複数あるときの配列
-     * @var \Sunra\PhpSimple\HtmlDomParser[] $all_dom
+     * @var \KubAT\PhpSimple\HtmlDomParser[] $all_dom
      */
     private $all_dom;
     /**
@@ -94,7 +94,7 @@ class DomParserAdapter implements \IteratorAggregate
 
         if ((
                  !is_object($this->current_dom)
-              || get_class($this->current_dom) !== "simplehtmldom_1_5\simple_html_dom_node"
+                 || strpos(get_class($this->current_dom), "simple_html_dom_node") === false
             )
             && $this->allow_exception) {
             throw new DomNotFoundException();

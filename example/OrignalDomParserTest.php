@@ -8,7 +8,7 @@ ini_set('xdebug.var_display_max_depth', -1);
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use \Sunra\PhpSimple\HtmlDomParser;
+use \KubAT\PhpSimple\HtmlDomParser;
 
 $dom = HtmlDomParser::str_get_html("
 <html>
