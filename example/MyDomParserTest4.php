@@ -9,11 +9,7 @@ ini_set('xdebug.var_display_max_depth', -1);
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use \DomParserWrapper\DomParserAdapter;
-use \Curl\MyCurlBuilder;
-use \Curl\MyCurl;
 
-/* $curl1 = (new MyCurlBuilder("https://www.nicovideo.jp/"))->build();
- * $result_html = $curl1->getResult(); */
 try {
     $dom = new DomParserAdapter("
 <html>
