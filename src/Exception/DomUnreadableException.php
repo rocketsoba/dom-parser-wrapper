@@ -1,8 +1,8 @@
 <?php
 
-namespace DomParserWrapper\Exception;
+namespace Rocketsoba\DomParserWrapper\Exception;
 
-use \Exception;
+use Exception;
 
 class DomUnreadableException extends Exception
 {

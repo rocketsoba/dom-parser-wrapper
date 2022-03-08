@@ -1,18 +1,19 @@
 <?php
 
-namespace DomParserWrapper;
+namespace Rocketsoba\DomParserWrapper;
 
-use \KubAT\PhpSimple\HtmlDomParser;
-use \DomParserWrapper\Exception\DomNotFoundException;
-use \DomParserWrapper\Exception\DomUnreadableException;
-use \LogicException;
+use KubAT\PhpSimple\HtmlDomParser;
+use Rocketsoba\DomParserWrapper\Exception\DomNotFoundException;
+use Rocketsoba\DomParserWrapper\Exception\DomUnreadableException;
+use LogicException;
+use IteratorAggregate;
 
 /**
  * PHP Simple HTML DOM Parserのラッパークラス
  *
  * 移譲のAdapterパターン、IteratorAggregateを使用
  */
-class DomParserAdapter implements \IteratorAggregate
+class DomParserAdapter implements IteratorAggregate
 {
     /**
      * 現在のDOM(HtmlDomParser)オブジェクト

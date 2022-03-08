@@ -8,7 +8,7 @@ ini_set('xdebug.var_display_max_depth', -1);
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use \DomParserWrapper\DomParserAdapter;
+use Rocketsoba\DomParserWrapper\DomParserAdapter;
 
 try {
     $dom = new DomParserAdapter("
