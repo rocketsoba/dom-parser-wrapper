@@ -33,6 +33,8 @@ class DomParserAdapter implements IteratorAggregate
     private $allow_exception = true;
     /** @var bool $is_dom_many */
     private $is_dom_many = false;
+    /** @var bool $deep_copy */
+    private $deep_copy = false;
 
     /**
      * DomParserWrapperのコンストラクタ
@@ -58,11 +60,19 @@ class DomParserAdapter implements IteratorAggregate
     public function getIterator()
     {
         if (empty($this->all_dom)) {
-            yield $this;
+            if ($this->deep_copy) {
+                yield clone $this;
+            } else {
+                yield $this;
+            }
         } else {
             foreach ($this->all_dom as $idx1 => $val1) {
                 $this->current_dom = $val1;
-                yield $this;
+                if ($this->deep_copy) {
+                    yield clone $this;
+                } else {
+                    yield $this;
+                }
             }
         }
     }
@@ -260,6 +270,30 @@ class DomParserAdapter implements IteratorAggregate
     public function denyException()
     {
         $this->allow_exception = false;
+
+        return $this;
+    }
+
+    /**
+     * ディープコピー有効
+     *
+     * @return $this
+     */
+    public function enableDeepCopy()
+    {
+        $this->deep_copy = true;
+
+        return $this;
+    }
+
+    /**
+     * ディープコピー無効
+     *
+     * @return $this
+     */
+    public function disableDeepCopy()
+    {
+        $this->deep_copy = false;
 
         return $this;
     }
