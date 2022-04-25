@@ -103,11 +103,13 @@ class DomParserAdapter implements IteratorAggregate
             }
         }
 
-        if ((
+        if (
+            (
                  !is_object($this->current_dom)
                  || strpos(get_class($this->current_dom), "simple_html_dom_node") === false
             )
-            && $this->allow_exception) {
+            && $this->allow_exception
+        ) {
             throw new DomNotFoundException();
         }
 
@@ -308,17 +310,22 @@ class DomParserAdapter implements IteratorAggregate
      */
     public function __get($name)
     {
+        $text = "";
         $all_attributes = $this->getAllAttributes();
         if (isset($all_attributes[$name])) {
             return $all_attributes[$name];
         }
         switch ($name) {
             case 'outertext':
-                return $this->outertext();
+                $text = $this->outertext();
+                break;
             case 'innertext':
-                return $this->innertext();
+                $text = $this->innertext();
+                break;
             case 'plaintext':
-                return $this->plaintext();
+                $text = $this->plaintext();
+                break;
         }
+        return (string)$text;
     }
 }
